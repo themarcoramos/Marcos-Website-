@@ -49,38 +49,143 @@
                 <a href="handcuffs.pdf" target="_blank" class="btn">View Sanitized "Handcuffs Aren't Housing" Toolkit</a>
             </div>
 
-            <h2 style="margin-top: 40px;">Technical Architecture</h2>
-            <p><strong>Big Brothers Big Sisters (BBBS):</strong> Architecting a custom recruitment pipeline to scale mentor outreach across 11 regional Northern California counties.</p>
+            <!-- NEW BBBS ERP SECTION -->
+            <h2 style="margin-top: 50px; color: #a8e6cf;">BBBS Community Hub: Enterprise Intake & Mentorship ERP</h2>
             
-            <div class="code-window">
-                <div class="code-header">
-                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                </div>
-                <div class="code-body">
+            <h3 style="margin-top: 20px;">The Challenge</h3>
+            <p>Big Brothers Big Sisters of Greater Sacramento relied on a fragmented system of manual spreadsheets, isolated form builders, and disconnected communication tools. This siloed approach created a significant operational bottleneck: staff spent hours manually copying data, applicants suffered from "form fatigue," and critical compliance tracking required constant, manual oversight.</p>
+
+            <h3 style="margin-top: 20px;">The Architecture</h3>
+            <p>I architected a custom Enterprise Resource Planning (ERP) ecosystem on Replit to serve as a unified orchestration layer. Moving beyond a standard web portal, the Hub centralizes the entire mentorship lifecycle—from initial application to active match support.</p>
+            
+            <ul style="line-height: 1.8; margin-bottom: 20px;">
+                <li><strong>The Match Triangle:</strong> Engineered a unified relational database schema that synchronizes Bigs, Littles, and Parents/Guardians into a single source of truth, eliminating cross-departmental data silos.</li>
+                <li><strong>Strict Pathing & Compliance Gating:</strong> Designed a linear, frictionless onboarding UI that replaces overwhelming dashboards with horizontal progress steppers. The system programmatically locks community features and interview scheduling until mandatory safety requirements (Live Scan, National Training, Mandated Reporter) are verified by staff.</li>
+                <li><strong>AIGP/NIST Security Governance:</strong> Implemented "Least Privilege Access" and PII-masking middleware. This ensures that sensitive youth data (last names, addresses) is scrubbed before any external processing, adhering to strict compliance standards for high-risk data.</li>
+                <li><strong>Omnichannel Nudge Engine:</strong> Developed an automated communication workflow to tackle the "parent-response bottleneck," sending targeted reminders via SMS and email to keep applicants moving through the funnel.</li>
+            </ul>
+
+            <h3 style="margin-top: 20px;">The Impact</h3>
+            <p>The Community Hub transformed a manual administrative burden into a streamlined operational engine. By automating repetitive tasks and enforcing compliance programmatically, the system reclaims critical staff hours, allowing the agency to focus funding and energy directly on what matters most: vetting, interviewing, and supporting life-changing mentorship matches.</p>
+
+            <!-- TYPESCRIPT CODE SNIPPET -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-top: 40px; margin-bottom: 40px;">
+                <h4 style="color: #a8e6cf; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 10px;">Architectural Highlight: Compliance Verification Engine</h4>
+                <p style="font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6;">This middleware enforces <strong>Strict Pathing</strong>. It programmatically locks applicants out of community features and interview scheduling until all mandatory background and safety checks are verified by staff, ensuring zero compliance leaks.</p>
+                
+                <div class="code-window" style="margin: 0;">
+                    <div class="code-header">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    </div>
+                    <div class="code-body">
 <pre>
-<span class="code-comment"># Sanitized Logic: Regional Mentor Lead Routing</span>
-<span class="code-keyword">def</span> <span class="code-func">route_mentor_lead</span>(applicant_data):
-    <span class="code-comment"># Define active regional oversight jurisdictions</span>
-    active_counties = [
-        <span class="code-string">"Sacramento"</span>, <span class="code-string">"Placer"</span>, <span class="code-string">"Yolo"</span>, <span class="code-string">"San Joaquin"</span>, 
-        <span class="code-string">"Stanislaus"</span>, <span class="code-string">"Lake"</span>, <span class="code-string">"Butte"</span>, <span class="code-string">"Sutter"</span>, 
-        <span class="code-string">"Colusa"</span>, <span class="code-string">"Yuba"</span>, <span class="code-string">"Glenn"</span>
-    ]
-    
-    applicant_county = applicant_data.get(<span class="code-string">"county"</span>)
-    
-    <span class="code-keyword">if</span> applicant_county <span class="code-keyword">in</span> active_counties:
-        <span class="code-comment"># Deploy priority routing to specific regional hub</span>
-        <span class="code-func">dispatch_to_regional_hub</span>(applicant_data.id, applicant_county)
-        <span class="code-keyword">return</span> <span class="code-string">f"Priority Match Deployed: {applicant_county} Hub"</span>
-    
-    <span class="code-comment"># Fallback scaling pipeline</span>
-    <span class="code-func">standard_statewide_onboarding</span>(applicant_data.id)
-    <span class="code-keyword">return</span> <span class="code-string">"Standard Statewide Routing"</span>
+<span class="code-comment">// TypeScript: Automated Compliance Gating & Feature Access</span>
+
+<span class="code-keyword">export function</span> <span class="code-func">evaluatePortalAccess</span>(applicant: ApplicantProfile): PortalAccessState {
+  <span class="code-comment">// 1. Check mandatory security and compliance milestones</span>
+  <span class="code-keyword">const</span> isComplianceCleared = 
+    applicant.orientationVerified &&
+    applicant.liveScanCleared &&
+    applicant.mandatedReporterCertified &&
+    applicant.nationalTrainingCompleted;
+
+  <span class="code-comment">// 2. Enforce Strict Pathing for unverified applicants</span>
+  <span class="code-keyword">if</span> (!isComplianceCleared) {
+    <span class="code-keyword">return</span> {
+      status: <span class="code-string">"enrolling"</span>,
+      unlockedFeatures: [<span class="code-string">"EnrollmentStepper"</span>, <span class="code-string">"RequirementsHub"</span>],
+      lockedFeatures: [<span class="code-string">"CommunityFeed"</span>, <span class="code-string">"TicketClaims"</span>, <span class="code-string">"ActivityIdeas"</span>],
+      <span class="code-comment">// Interview booking requires orientation and application completion</span>
+      interviewBookingAllowed: applicant.orientationVerified && applicant.applicationSubmitted
+    };
+  }
+
+  <span class="code-comment">// 3. Grant full ecosystem access to fully vetted matches</span>
+  <span class="code-keyword">return</span> {
+    status: <span class="code-string">"active"</span>,
+    unlockedFeatures: [<span class="code-string">"*"</span>], 
+    interviewBookingAllowed: <span class="code-keyword">true</span>
+  };
+}
 </pre>
+                    </div>
                 </div>
             </div>
 
+            <!-- LIVE DEMO & VIDEO EMBED (Tailwind adapted to Custom CSS) -->
+            <div style="margin: 60px 0 20px 0; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 40px;">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 style="font-size: 2rem; margin-bottom: 15px; color: #fff;">BBBS Community Hub: Live Demonstration</h2>
+                    <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 25px;">Explore the live production environment or watch the architectural walkthrough documenting the build process from MVP to Enterprise ERP.</p>
+                    
+                    <a href="https://bbbs-community-hub.replit.app" target="_blank" class="btn" style="background-color: #013220; border-color: #a8e6cf; color: #a8e6cf; display: inline-flex; align-items: center; gap: 8px; font-weight: bold; padding: 12px 24px;">
+                        Launch Live Production App
+                        <svg style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path></svg>
+                    </a>
+                    
+                    <div style="margin-top: 20px; padding: 12px 20px; background: rgba(168, 230, 207, 0.1); border: 1px solid #a8e6cf; border-radius: 8px; font-size: 0.9rem; color: #dcedc1; display: inline-block;">
+                        <strong>Testing the App?</strong> Use guest credentials to explore the onboarding flow without altering production data.
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; align-items: stretch;">
+                    <!-- Left Column: YouTube Video -->
+                    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                            <iframe 
+                                src="https://www.youtube.com/embed/1BRlOZ39RmQ?si=WC3WRWBkUOfXMdU5" 
+                                title="BBBS Community Hub Architecture Walkthrough" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                            </iframe>
+                        </div>
+                        <div style="padding: 20px;">
+                            <h3 style="font-size: 1.25rem; color: #a8e6cf; margin-top: 0; margin-bottom: 10px;">Phase 1: Architecture & Logic</h3>
+                            <p style="font-size: 0.9rem; opacity: 0.8; margin: 0; line-height: 1.5;">A walkthrough of the initial UI steppers, the operational funnel, and the foundational logic before scaling to a multi-tenant environment.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Feature Highlights -->
+                    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; display: flex; flex-direction: column;">
+                        <h3 style="font-size: 1.5rem; color: #a8e6cf; margin-top: 0; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">Production Features</h3>
+                        
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px;">
+                            <li style="display: flex; align-items: flex-start;">
+                                <svg style="height: 24px; width: 24px; color: #a8e6cf; margin-right: 15px; flex-shrink: 0;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; font-size: 1rem; color: #fff;">Match Triangle Architecture</h4>
+                                    <p style="margin: 0; font-size: 0.85rem; opacity: 0.8; line-height: 1.5;">Unified relational database linking Bigs, Littles, and Parents into a single synced entity.</p>
+                                </div>
+                            </li>
+                            <li style="display: flex; align-items: flex-start;">
+                                <svg style="height: 24px; width: 24px; color: #a8e6cf; margin-right: 15px; flex-shrink: 0;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; font-size: 1rem; color: #fff;">Strict Pathing & Compliance Gates</h4>
+                                    <p style="margin: 0; font-size: 0.85rem; opacity: 0.8; line-height: 1.5;">Community features stay locked until Live Scan and National Training are staff-verified.</p>
+                                </div>
+                            </li>
+                            <li style="display: flex; align-items: flex-start;">
+                                <svg style="height: 24px; width: 24px; color: #a8e6cf; margin-right: 15px; flex-shrink: 0;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; font-size: 1rem; color: #fff;">AIGP/NIST Data Governance</h4>
+                                    <p style="margin: 0; font-size: 0.85rem; opacity: 0.8; line-height: 1.5;">Middleware automatically scrubs sensitive child records (names, addresses) prior to any processing.</p>
+                                </div>
+                            </li>
+                            <li style="display: flex; align-items: flex-start;">
+                                <svg style="height: 24px; width: 24px; color: #a8e6cf; margin-right: 15px; flex-shrink: 0;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; font-size: 1rem; color: #fff;">Omnichannel Nudge Engine</h4>
+                                    <p style="margin: 0; font-size: 0.85rem; opacity: 0.8; line-height: 1.5;">Automated SMS and email reminders to resolve the parent-response bottleneck.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REST OF ORIGINAL CONTENT -->
             <h2 style="margin-top: 50px;">Digital Divide & Literacy</h2>
             
             <h3 style="margin-top: 20px;">Superior Court of California (Kings County)</h3>
@@ -100,7 +205,7 @@
 
             <div class="badge-container">
                 <span class="badge">Full-Stack Web Dev</span>
-                <span class="badge">Python / Pandas</span>
+                <span class="badge">TypeScript / Node</span>
                 <span class="badge">Process Automation</span>
                 <span class="badge">WCAG 2.1 Compliance</span>
                 <span class="badge">User-Centered Design</span>
