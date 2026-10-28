@@ -12,9 +12,6 @@
     <link rel="stylesheet" href="style.css">
     <style>
         /* Custom Styles for this specific page */
-        .badge-container { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; }
-        .badge { border: 1px solid #a8e6cf; color: #a8e6cf; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
-
 
         .code-window { background: #1e1e1e; border-radius: 8px; overflow: hidden; margin: 20px 0; border: 1px solid #333; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         .code-header { background: #2d2d2d; padding: 10px; display: flex; gap: 6px; border-bottom: 1px solid #444; }
@@ -47,13 +44,13 @@
 
             <ul style="line-height: 1.8; margin-bottom: 20px;">
                 <li><strong>Linked records:</strong> A relational schema connects Bigs (volunteer mentors), Littles (youth), and parents/guardians, so each match is tracked in one place.</li>
-                <li><strong>Compliance tracking and gating:</strong> Staff verify mandatory safety requirements (Live Scan, National Training, Mandated Reporter), and the platform gates community features and interview scheduling on those checks. Applicants move through a horizontal progress stepper instead of an overwhelming dashboard.</li>
+                <li><strong>Compliance tracking and gating:</strong> Staff verify each required step (orientation, Live Scan, National Training, Mandated Reporter), and the platform keeps community features locked until all of them are complete. Interview scheduling opens once the orientation and application are done. Applicants move through a horizontal progress stepper instead of an overwhelming dashboard.</li>
                 <li><strong>Data protection:</strong> Role-based access control, plus PII masking on AI-assisted features so child and family identifiers are masked before processing. Designed with reference to the NIST AI Risk Management Framework.</li>
                 <li><strong>Automated reminders:</strong> Scheduled SMS and email reminders (1,700+ sent since July 2026) keep applicants moving through the funnel.</li>
             </ul>
 
             <h3 style="margin-top: 20px;">The Impact</h3>
-            <p>The platform gives staff one place to track every applicant's progress, builds required safety checks into the workflow, and automates routine applicant follow-up. It now holds 150+ volunteer and guardian accounts, with new enrollments daily, so staff time can go toward interviewing and supporting mentoring matches.</p>
+            <p>Before the platform, some applicants sat in a pending status for years waiting to be matched. Since launch, the quickest matches now happen in a little over a month. The platform gives staff one place to track every applicant's progress, builds required safety checks into the workflow, and automates routine applicant follow-up. It now holds 150+ volunteer and guardian accounts, with new enrollments daily, so staff time can go toward interviewing and supporting mentoring matches.</p>
 
             <!-- WALKTHROUGH & DEMO -->
             <div style="margin: 60px 0 20px 0; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 40px;">
@@ -70,7 +67,7 @@
                     <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
                         <div style="position: relative; padding-bottom: 56.25%; height: 0;">
                             <iframe
-                                src="https://www.youtube.com/embed/1BRlOZ39RmQ?si=WC3WRWBkUOfXMdU5"
+                                src="https://www.youtube.com/embed/1BRlOZ39RmQ?start=247&si=WC3WRWBkUOfXMdU5"
                                 title="BBBS Community Hub platform walkthrough"
                                 loading="lazy"
                                 referrerpolicy="strict-origin-when-cross-origin"
@@ -81,7 +78,7 @@
                         </div>
                         <div style="padding: 20px;">
                             <h3 style="font-size: 1.25rem; color: #a8e6cf; margin-top: 0; margin-bottom: 10px;">Platform Walkthrough</h3>
-                            <p style="font-size: 0.9rem; opacity: 0.9; margin: 0; line-height: 1.5;">A walkthrough of the enrollment steppers, the operational funnel, and the foundational logic behind the platform.</p>
+                            <p style="font-size: 0.9rem; opacity: 0.9; margin: 0; line-height: 1.5;">Recorded at an AI for Good community demo day (June 2026); the video starts at my segment, about 26 minutes. I walk through enrollment and interview scheduling, the community features, and the staff admin view, then show how I build, test, and publish changes with AI-assisted development, followed by audience questions.</p>
                         </div>
                     </div>
                 </div>
@@ -129,14 +126,6 @@
 </pre>
                     </div>
                 </div>
-            </div>
-
-            <div class="badge-container">
-                <span class="badge">Data Governance</span>
-                <span class="badge">Role-Based Access</span>
-                <span class="badge">TypeScript / Node / React</span>
-                <span class="badge">PostgreSQL</span>
-                <span class="badge">Process Automation</span>
             </div>
 
         </main>
