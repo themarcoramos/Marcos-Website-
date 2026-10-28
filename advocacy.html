@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Governance &amp; Digital Infrastructure | Marco A. Ramos Jr.</title>
-    <meta name="description" content="Case study: a production enrollment and compliance-tracking platform for a youth-mentoring nonprofit, plus an advocacy toolkit adapted from my work at CAMHPRO.">
+    <meta name="description" content="Case study: a production enrollment and compliance-tracking platform for a youth-mentoring nonprofit, with role-based access, PII masking on AI-assisted features, and automated reminders.">
     <meta property="og:title" content="Data Governance &amp; Digital Infrastructure | Marco A. Ramos Jr.">
     <meta property="og:description" content="A youth-mentoring enrollment platform with role-based access, PII masking on AI features, and automated reminders.">
     <meta property="og:type" content="article">
@@ -15,10 +15,6 @@
         .badge-container { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; }
         .badge { border: 1px solid #a8e6cf; color: #a8e6cf; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        .flowchart { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.05); padding: 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; margin: 20px 0; flex-wrap: wrap; gap: 15px; }
-        .flow-node { background: #013220; border: 1px solid #a8e6cf; padding: 15px; border-radius: 5px; text-align: center; flex: 1; min-width: 150px; font-size: 0.9rem; color: #dcedc1; }
-        .flow-sub { font-size: 0.75rem; opacity: 0.9; }
-        .flow-arrow { color: #a8e6cf; font-size: 1.5rem; font-weight: bold; }
 
         .code-window { background: #1e1e1e; border-radius: 8px; overflow: hidden; margin: 20px 0; border: 1px solid #333; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         .code-header { background: #2d2d2d; padding: 10px; display: flex; gap: 6px; border-bottom: 1px solid #444; }
@@ -38,7 +34,7 @@
     <div class="page-wrapper" style="padding-bottom: 25vh;">
         <main id="main" class="glass-box">
             <h1>Data Governance &amp; Digital Infrastructure</h1>
-            <p class="tagline" style="margin-bottom: 40px;">Practical systems for protecting data, enforcing safety requirements, and turning policy into action.</p>
+            <p class="tagline" style="margin-bottom: 40px;">A youth-mentoring enrollment platform built to protect applicant data, enforce safety requirements, and automate follow-up.</p>
 
             <!-- BBBS CASE STUDY -->
             <h2 style="margin-top: 20px; color: #a8e6cf;">BBBS Community Hub: Enrollment &amp; Mentorship Platform</h2>
@@ -171,31 +167,12 @@
                 </div>
             </div>
 
-            <!-- CAMHPRO: LEGISLATIVE OUTREACH & TOOLKIT -->
-            <div style="margin: 60px 0 20px 0; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 40px;">
-                <h2 style="margin-top: 0; color: #a8e6cf;">CAMHPRO: Legislative Outreach &amp; Advocacy Toolkit</h2>
-                <p>As a consultant for CAMHPRO, I build and manage digital outreach for its legislative campaigns: weekly email campaigns to a 4,000+ contact list, plain-language bill summaries and alerts, and an automated letter tool that has sent 1,500+ messages on 17 bills. I also wrote the "Handcuffs Aren’t Housing" flyer and public-comment talking points, which were distributed to organizations across California.</p>
-                <p>The toolkit linked below is my independent adaptation of those materials, covering Proposition 36, pretrial diversion, CARE Court, and conservatorship. It is not an official CAMHPRO document.</p>
-
-                <div class="flowchart">
-                    <div class="flow-node">Legislative Bill<br><span class="flow-sub">Read and analyzed</span></div>
-                    <div class="flow-arrow" aria-hidden="true">→</div>
-                    <div class="flow-node">Plain-Language Summary<br><span class="flow-sub">Bill summaries and alerts</span></div>
-                    <div class="flow-arrow" aria-hidden="true">→</div>
-                    <div class="flow-node">Action Tools<br><span class="flow-sub">Letter tool, flyer, talking points</span></div>
-                </div>
-
-                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 10px;">
-                    <a href="handcuffs.pdf" target="_blank" rel="noopener noreferrer" class="btn">View "Handcuffs Aren't Housing" Advocacy Toolkit</a>
-                </div>
-            </div>
-
             <div class="badge-container">
-                <span class="badge">Policy &amp; Legislative Analysis</span>
                 <span class="badge">Data Governance</span>
+                <span class="badge">Role-Based Access</span>
                 <span class="badge">TypeScript / Node / React</span>
+                <span class="badge">PostgreSQL</span>
                 <span class="badge">Process Automation</span>
-                <span class="badge">Accessibility (WCAG)</span>
             </div>
 
         </main>
